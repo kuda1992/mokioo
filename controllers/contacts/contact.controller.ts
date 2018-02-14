@@ -23,7 +23,7 @@ const createContact = (request: Request, response: Response, next: Function) => 
         .from('users')
         .then(([user]) => {
             const user_id = user['user_id'];
-            let row = {...body, ...{user_id}};
+            let row: {} = {...body, ...{user_id}};
             row = addCreatedAt(row);
             row = addUpdatedAt(row);
             knexConfig.insert(row)
