@@ -23,7 +23,7 @@ export const loginController = (request: Request, response: Response, next: Func
         .then(([user]) => {
             user = UserSchema(user);
             if (!user.validatePassword(password)) {
-                response.send(401)
+                return response.send(401)
             }
 
             const token = user.generateJWT(username);
